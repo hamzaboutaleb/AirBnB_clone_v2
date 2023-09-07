@@ -3,7 +3,7 @@
 distributes an archive to your web servers
 """
 
-from fabrix.api import put
+from fabric.api import put
 from os import path
 
 env.hosts = ['100.26.238.129', '18.210.15.20']
