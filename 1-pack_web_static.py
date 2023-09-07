@@ -12,10 +12,10 @@ def do_pack():
     """Compress content web_static"""
 
     local("mkdir -p versions")
-    now = datetime.datetime.now()
+    now = datetime.now()
     filename = now.strftime("web_static_%Y%m%d%H%M%S.tgz")
     path = "versions/{}".format(filename)
-    result = local("tar -czvf {} web_static".format(path)
+    result = local("tar -czvf {} web_static".format(path))
 
     if result.failed:
         return None
