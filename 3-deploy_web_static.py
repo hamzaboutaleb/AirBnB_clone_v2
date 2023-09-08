@@ -4,6 +4,7 @@ distributes an archive to your web servers
 """
 
 from fabric.api import env, run, put, sudo, local
+from datetime import datetime
 import os
 
 env.hosts = ['100.26.238.129', '18.210.15.20']
