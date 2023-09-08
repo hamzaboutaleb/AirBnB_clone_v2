@@ -4,9 +4,11 @@ distributes an archive to your web servers
 """
 
 from fabric.api import env, run, put, sudo
-from os import path
+import os
 
 env.hosts = ['100.26.238.129', '18.210.15.20']
+env.user = "ubuntu"
+env.key_filename = "~/.ssh/school"
 
 
 def do_pack():
@@ -26,22 +28,22 @@ def do_pack():
 def do_deploy(archive_path):
     """ do deploy """
 
-    if not path.exists(archive_path):
+    if not os.path.exists(archive_path):
+        print("no file exist")
         return False
     try:
         # get folder name from filePath
-        folder_name = path.splitext(os.path.basename(archive_path))[0]
-        folder_path = "/data/web_static/releases/{}".format(folder_name)
+        file_name = os.path.splitext(os.path.basename(archive_path))[0]
+        folder_path = "/data/web_static/releases/{}".format(file_name)
+        print(file_name, folder_path)
 
         put(archive_path, "/tmp/")
         run("mkdir -p {}".format(folder_path))
-        run("tar -xzf /tmp/{} -C {}".format(file_name, folder_path))
-        run("rm -rf /tmp/{}".format(file_name))
-        run("mv {}/web_static/* {}".format(folder_path, folder_path))
-        run("rm -rf {}/web_static".format(folder_path))
+        run("tar -xzf /tmp/{}.tgz -C {}".format(file_name, folder_path))
+        run("rm -rf /tmp/{}.tgz".format(file_name))
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static/current".format(folder_path))
         return True
-    except Exception:
-        print("sometihng went wrong")
+    except Exception as e:
+        print("sometihng went wrong", e)
         return False
