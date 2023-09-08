@@ -24,6 +24,7 @@ def do_pack():
 
 
 def do_deploy(archive_path):
+    """ do deploy """
 
     if not path.exists(archive_path):
         return False
