@@ -9,6 +9,20 @@ from os import path
 env.hosts = ['100.26.238.129', '18.210.15.20']
 
 
+def do_pack():
+    """Compress content web_static"""
+
+    local("mkdir -p versions")
+    now = datetime.now()
+    filename = now.strftime("web_static_%Y%m%d%H%M%S.tgz")
+    path = "versions/{}".format(filename)
+    result = local("tar -czvf {} web_static".format(path))
+
+    if result.failed:
+        return None
+    return path
+
+
 def do_deploy(archive_path):
 
     if not path.exists(archive_path):
@@ -28,4 +42,5 @@ def do_deploy(archive_path):
         run("ln -s {} /data/web_static/current".format(folder_path))
         return True
     except Exception:
+        print("sometihng went wrong")
         return False
