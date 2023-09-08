@@ -6,9 +6,9 @@ distributes an archive to your web servers
 from fabric.api import env, run, put, sudo
 import os
 
-# env.hosts = ['100.26.238.129', '18.210.15.20']
-# env.user = "ubuntu"
-# env.key_filename = "~/.ssh/school"
+env.hosts = ['100.26.238.129', '18.210.15.20']
+env.user = "ubuntu"
+env.key_filename = "~/.ssh/school"
 
 
 def do_pack():
