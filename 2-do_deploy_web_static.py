@@ -6,9 +6,9 @@ distributes an archive to your web servers
 from fabric.api import env, run, put, sudo
 import os
 
-env.hosts = ['100.26.238.129', '18.210.15.20']
-env.user = "ubuntu"
-env.key_filename = "~/.ssh/school"
+# env.hosts = ['100.26.238.129', '18.210.15.20']
+# env.user = "ubuntu"
+# env.key_filename = "~/.ssh/school"
 
 
 def do_pack():
@@ -41,7 +41,8 @@ def do_deploy(archive_path):
         run("mkdir -p {}".format(folder_path))
         run("tar -xzf /tmp/{}.tgz -C {}".format(file_name, folder_path))
         run("rm -rf /tmp/{}.tgz".format(file_name))
-        run("cp -a /data/web_static/releases/{}/web_static/. {}".format(file_name, folder_path))
+        run("cp -a /data/web_static/releases/{}/web_static/. {}"
+            .format(file_name, folder_path))
         run("rm -rf /data/web_static/releases/{}/web_static".format(file_name))
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static/current".format(folder_path))
