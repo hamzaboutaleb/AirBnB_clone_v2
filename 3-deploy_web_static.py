@@ -52,6 +52,7 @@ def do_deploy(archive_path):
         print("sometihng went wrong", e)
         return False
 
+
 def deploy():
     """ deploy web_static """
     archive_path = do_pack()
