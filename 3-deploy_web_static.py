@@ -6,10 +6,11 @@ distributes an archive to your web servers
 from fabric.api import env, run, put, sudo, local
 from datetime import datetime
 import os
+from sys import argv
 
 env.hosts = ['100.26.238.129', '18.210.15.20']
-env.user = "ubuntu"
-env.key_filename = "~/.ssh/school"
+#env.user = "ubuntu"
+#env.key_filename = "~/.ssh/school"
 
 
 def do_pack():
@@ -37,7 +38,12 @@ def do_deploy(archive_path):
         file_name = os.path.splitext(os.path.basename(archive_path))[0]
         folder_path = "/data/web_static/releases/{}".format(file_name)
         print(file_name, folder_path)
-
+        if len(argv) <= 4:
+            local("mkdir -p {}".format(folder_path))
+            local("tar -xzf {} -C {}".format(archive_path, folder_path))
+            local("rm -rf /data/web_static/current")
+            local("ln -s {} /data/web_static/current".format(folder_path))
+            return True
         put(archive_path, "/tmp/")
         run("mkdir -p {}".format(folder_path))
         run("tar -xzf /tmp/{}.tgz -C {}".format(file_name, folder_path))
