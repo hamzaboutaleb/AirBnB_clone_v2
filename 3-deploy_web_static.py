@@ -43,7 +43,7 @@ def do_deploy(archive_path):
             local("tar -xzf {} -C {}".format(archive_path, folder_path))
             local("rm -rf /data/web_static/current")
             local("ln -s {} /data/web_static/current".format(folder_path))
-            return True
+            
         put(archive_path, "/tmp/")
         run("mkdir -p {}".format(folder_path))
         run("tar -xzf /tmp/{}.tgz -C {}".format(file_name, folder_path))
