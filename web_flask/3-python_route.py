@@ -24,7 +24,7 @@ def c_page(text):
     return f"C {text.replace('_', ' ')}"
 
 
-@app.rouet("/python/<text>", strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
 def python_page(text="is cool"):
     return f"Python {text.replace('_', ' ')}"
 
