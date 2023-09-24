@@ -1,4 +1,4 @@
-#!/usr/bin/pyhton3
+#!/usr/bin/python3
 from flask import Flask
 """ Hello route """
 app = Flask(__name__)
