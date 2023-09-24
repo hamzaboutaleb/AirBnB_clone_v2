@@ -34,7 +34,7 @@ class Place(BaseModel, Base):
 
     reviews = relationship('Review', backref='place', cascade='delete')
 
-    if storage_type != "db":
+    if storage_type == "db":
         amenities = relationship('Amenity', secondary=place_amenity, back_populates='places')
 
     else:
