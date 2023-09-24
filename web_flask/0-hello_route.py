@@ -1,10 +1,12 @@
+#!/usr/bin/pyhton3
 from flask import Flask
-
+""" Hello route """
 app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
 def home_route():
+    """home page controller"""
     return "Hello HBNB!"
 
 
