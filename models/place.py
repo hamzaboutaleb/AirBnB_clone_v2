@@ -4,7 +4,6 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from models.review import Review
-from models.amenity import Amenity
 from sqlalchemy.schema import Table
 from models import storage_type
 
@@ -54,10 +53,12 @@ class Place(BaseModel, Base):
         def amenities(self):
             """ return list of amenities instance """
             from models import storage
+            from models.amenity import Amenity
             return [storage.get(Amenity, amenity_id) for amenity_id in self.amenity_ids]
 
         @amenities.setter
         def amenities(self, amenity_obj):
             """ add Amenity.is """
+            from models.amenity import Amenity
             if isinstance(amenity_obj, Amenity):
                 self.amenity_ids.append(amenity_obj.id)

@@ -1,1 +1,78 @@
-{"State.c8bae85f-5c30-4358-8579-d01c834332d2": {"id": "c8bae85f-5c30-4358-8579-d01c834332d2", "name": "California", "created_at": "2023-09-24T12:18:27.396288", "updated_at": "2023-09-24T12:18:27.396443", "__class__": "State"}, "State.da482be8-3941-4090-b96b-d1fe0944204d": {"id": "da482be8-3941-4090-b96b-d1fe0944204d", "name": "Arizona", "created_at": "2023-09-24T12:18:27.397014", "updated_at": "2023-09-24T12:18:27.397098", "__class__": "State"}, "City.41ae1dec-253b-442d-b952-7b602b85e0b6": {"id": "41ae1dec-253b-442d-b952-7b602b85e0b6", "state_id": "c8bae85f-5c30-4358-8579-d01c834332d2", "name": "Napa", "created_at": "2023-09-24T12:18:27.397464", "updated_at": "2023-09-24T12:18:27.397533", "__class__": "City"}, "City.6e445f80-5648-477f-9f2e-120dea9ebc70": {"id": "6e445f80-5648-477f-9f2e-120dea9ebc70", "state_id": "c8bae85f-5c30-4358-8579-d01c834332d2", "name": "Sonoma", "created_at": "2023-09-24T12:18:27.398419", "updated_at": "2023-09-24T12:18:27.398469", "__class__": "City"}, "City.65fac1ad-276b-440c-affb-af5f1431483e": {"id": "65fac1ad-276b-440c-affb-af5f1431483e", "state_id": "da482be8-3941-4090-b96b-d1fe0944204d", "name": "Page", "created_at": "2023-09-24T12:18:27.399099", "updated_at": "2023-09-24T12:18:27.399149", "__class__": "City"}}
+{
+  "State.c8bae85f-5c30-4358-8579-d01c834332d2": {
+    "id": "c8bae85f-5c30-4358-8579-d01c834332d2",
+    "name": "California",
+    "created_at": "2023-09-24T12:18:27.396288",
+    "updated_at": "2023-09-24T12:18:27.396443",
+    "__class__": "State"
+  },
+  "State.da482be8-3941-4090-b96b-d1fe0944204d": {
+    "id": "da482be8-3941-4090-b96b-d1fe0944204d",
+    "name": "Arizona",
+    "created_at": "2023-09-24T12:18:27.397014",
+    "updated_at": "2023-09-24T12:18:27.397098",
+    "__class__": "State"
+  },
+  "City.41ae1dec-253b-442d-b952-7b602b85e0b6": {
+    "id": "41ae1dec-253b-442d-b952-7b602b85e0b6",
+    "state_id": "c8bae85f-5c30-4358-8579-d01c834332d2",
+    "name": "Napa",
+    "created_at": "2023-09-24T12:18:27.397464",
+    "updated_at": "2023-09-24T12:18:27.397533",
+    "__class__": "City"
+  },
+  "City.6e445f80-5648-477f-9f2e-120dea9ebc70": {
+    "id": "6e445f80-5648-477f-9f2e-120dea9ebc70",
+    "state_id": "c8bae85f-5c30-4358-8579-d01c834332d2",
+    "name": "Sonoma",
+    "created_at": "2023-09-24T12:18:27.398419",
+    "updated_at": "2023-09-24T12:18:27.398469",
+    "__class__": "City"
+  },
+  "City.65fac1ad-276b-440c-affb-af5f1431483e": {
+    "id": "65fac1ad-276b-440c-affb-af5f1431483e",
+    "state_id": "da482be8-3941-4090-b96b-d1fe0944204d",
+    "name": "Page",
+    "created_at": "2023-09-24T12:18:27.399099",
+    "updated_at": "2023-09-24T12:18:27.399149",
+    "__class__": "City"
+  },
+  "State.8dfbe2e1-177c-431b-93b9-dae620d8722c": {
+    "id": "8dfbe2e1-177c-431b-93b9-dae620d8722c",
+    "name": "California",
+    "created_at": "2023-09-24T12:19:36.029853",
+    "updated_at": "2023-09-24T12:19:36.029923",
+    "__class__": "State"
+  },
+  "State.706d9a32-3fb4-43d2-a755-d9e0b8187268": {
+    "id": "706d9a32-3fb4-43d2-a755-d9e0b8187268",
+    "name": "Arizona",
+    "created_at": "2023-09-24T12:19:36.030481",
+    "updated_at": "2023-09-24T12:19:36.030545",
+    "__class__": "State"
+  },
+  "City.3c85411c-53ee-4df5-a991-7a576940b925": {
+    "id": "3c85411c-53ee-4df5-a991-7a576940b925",
+    "state_id": "8dfbe2e1-177c-431b-93b9-dae620d8722c",
+    "name": "Napa",
+    "created_at": "2023-09-24T12:19:36.031312",
+    "updated_at": "2023-09-24T12:19:36.031369",
+    "__class__": "City"
+  },
+  "City.1d0e7622-53b1-4dbe-9c8b-3dc64d08f59e": {
+    "id": "1d0e7622-53b1-4dbe-9c8b-3dc64d08f59e",
+    "state_id": "8dfbe2e1-177c-431b-93b9-dae620d8722c",
+    "name": "Sonoma",
+    "created_at": "2023-09-24T12:19:36.031916",
+    "updated_at": "2023-09-24T12:19:36.031986",
+    "__class__": "City"
+  },
+  "City.6657aeb6-1ef2-4a30-83a3-c9dd9acf6e23": {
+    "id": "6657aeb6-1ef2-4a30-83a3-c9dd9acf6e23",
+    "state_id": "706d9a32-3fb4-43d2-a755-d9e0b8187268",
+    "name": "Page",
+    "created_at": "2023-09-24T12:19:36.072283",
+    "updated_at": "2023-09-24T12:19:36.072410",
+    "__class__": "City"
+  }
+}
