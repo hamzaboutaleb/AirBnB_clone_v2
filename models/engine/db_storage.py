@@ -29,7 +29,7 @@ class DBStorage():
         host = getenv("HBNB_MYSQL_HOST")
         db = getenv("HBNB_MYSQL_DB")
         env = getenv("HBNB_ENV")
-        con = "mysql+mysqldb://{}:{}@{}/{}".format(user, pwd, host, db)
+        con = "mysql+pymysql://{}:{}@{}/{}".format(user, pwd, host, db)
         self.__engine = create_engine(con, pool_pre_ping=True)
 
         if env == "test":
@@ -47,9 +47,8 @@ class DBStorage():
     def _toDict(self, rows):
         newDict = {}
         for row in rows:
-            for obj in row:
-                key = "{}.{}".format(type(obj).__name__, obj.id)
-                newDict[key] = obj
+            key = "{}.{}".format(type(row).__name__, row.id)
+            newDict[key] = row
         return newDict;
     def _getAll(self, cls):
         data = self.__session.query(cls).all()
@@ -72,8 +71,8 @@ class DBStorage():
             self.__session.delete(obj)
     def close(self):
         """ close session"""
-        if self.__session:
-            self.__session.close()
+        self.__session.close()
+        self.reload()
         
     def reload(self):
         """ Create tables and current db session """
