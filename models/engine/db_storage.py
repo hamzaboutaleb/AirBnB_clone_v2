@@ -22,7 +22,6 @@ class DBStorage():
     """db storage class"""
     __engine = None
     __session = None
-    Session = None
 
     def __init__(self):
         user = getenv("HBNB_MYSQL_USER")
@@ -73,9 +72,8 @@ class DBStorage():
 
     def close(self):
         """ close session"""
-        if self.Session != None:
-            self.Session.remove()
-            self.reload()
+        self.__session.close()
+        self.reload()
 
     def reload(self):
         """ Create tables and current db session """
