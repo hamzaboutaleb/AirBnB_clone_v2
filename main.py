@@ -41,7 +41,7 @@ if not re.search(r".*States.*", h1_tags[0]):
 
 ## LI state ID
 li_tags = list(filter(None, [x.replace(" ", "").strip(" ").strip("\n").strip("\t") for x in tree.xpath('//body/ul/li/text()')]))
-if li_tags is None or len(li_tags) != 3:
+if li_tags is None or len(li_tags) != 5:
     print("Doesn't find 5 LI tags (found {})".format(len(li_tags)))
     sys.exit(1)
 
