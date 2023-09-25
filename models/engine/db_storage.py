@@ -29,7 +29,7 @@ class DBStorage():
         host = getenv("HBNB_MYSQL_HOST")
         db = getenv("HBNB_MYSQL_DB")
         env = getenv("HBNB_ENV")
-        con = "mysql+mysqldb://{}:{}@{}/{}".format(user, pwd, host, db)
+        con = "mysql+pymysql://{}:{}@{}/{}".format(user, pwd, host, db)
         self.__engine = create_engine(con, pool_pre_ping=True)
 
         if env == "test":
@@ -72,8 +72,7 @@ class DBStorage():
 
     def close(self):
         """ close session"""
-        self.__session.close()
-        self.__session.remove()
+        self.__session.__class__.close(self.__session)
         self.reload()
 
     def reload(self):
