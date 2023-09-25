@@ -20,8 +20,9 @@ def states_list_page():
   return render_template("7-states_list.html", states = states)
 
 @app.teardown_appcontext
-def teardown(e):
-  storage.close()
+def teardown(exc):
+    """Remove the current SQLAlchemy session."""
+    storage.close()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0")
