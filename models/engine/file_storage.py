@@ -44,6 +44,7 @@ class FileStorage:
 
     def close(self):
         self.reload()
+
     def reload(self):
         """Loads storage dictionary from file"""
         from models.base_model import BaseModel

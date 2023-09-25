@@ -34,7 +34,7 @@ class DBStorage():
 
         if env == "test":
             Base.metadata.drop_all(self.__engine)
-    
+
     def all(self, cls=None):
         if cls:
             data = self._getAll(cls)
@@ -44,18 +44,19 @@ class DBStorage():
                 data.append(self._getAll(classObj))
         dictData = self._toDict(data)
         return dictData
+
     def _toDict(self, rows):
         newDict = {}
         for row in rows:
             key = "{}.{}".format(type(row).__name__, row.id)
             newDict[key] = row
-        return newDict;
+        return newDict
+
     def _getAll(self, cls):
         data = self.__session.query(cls).all()
         return data
 
-
-    def new(self,obj):
+    def new(self, obj):
         """ add new object to current db """
         if obj:
             self.__session.add(obj)
@@ -64,16 +65,16 @@ class DBStorage():
         """ Commit all changes of current db """
         self.__session.commit()
 
-
     def delete(self, obj=None):
         """ Delete from current db """
         if obj:
             self.__session.delete(obj)
+
     def close(self):
         """ close session"""
         self.__session.close()
         self.reload()
-        
+
     def reload(self):
         """ Create tables and current db session """
         Base.metadata.create_all(self.__engine)

@@ -15,11 +15,13 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
 
     if storage_type == 'db':
-        cities = relationship("City", backref="state", cascade="all, delete-orphan")
+        cities = relationship("City", backref="state",
+                              cascade="all, delete-orphan")
     else:
         @property
         def cities(self):
             """ returns list of City instances """
             from models import storage
             city_instances = storage.all(City)
-            return [city for city in city_instances.values() if city.state_id == self.id]            
+            return [city for city in city_instances.values() if
+                    city.state_id == self.id]
