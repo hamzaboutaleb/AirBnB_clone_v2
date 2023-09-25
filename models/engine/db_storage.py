@@ -72,7 +72,8 @@ class DBStorage():
 
     def close(self):
         """ close session"""
-        self.__session.close_all_sessions()
+        self.__session.close()
+        self.__session.remove()
         self.reload()
 
     def reload(self):
