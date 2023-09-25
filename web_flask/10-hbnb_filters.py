@@ -2,6 +2,8 @@
 """ start flask app """
 
 from models import storage
+from models.amenity import Amenity
+from models.state import State
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -16,8 +18,9 @@ def teardown(e):
 @app.route("/hbnb_filters", strict_slashes=False)
 def hbnb_filters():
     """ display hbnb_filters """
-    states = storage.all('State')
-    amenities = storage.all('Amenity')
+    states = storage.all(State).values()
+    print(states)
+    amenities = storage.all(Amenity).values()
     return render_template('10-hbnb_filters.html', states=states,
                            amenities=amenities)
 
