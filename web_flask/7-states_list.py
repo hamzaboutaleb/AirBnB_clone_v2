@@ -1,29 +1,26 @@
 #!/usr/bin/python3
-"""Web application"""
+""" start web app """
 
+from models import storage
 from flask import Flask, render_template
-# from models import storage
+from models.state import State
 
 app = Flask(__name__)
 
 
-@app.route("/states_list", strict_slashes=False)
-def states_list_page():
-  # states = storage.all("State").values()
-  # states = sorted(states, key=lambda state: state.name)
-  states = [
-    {'id': '421a55f4-7d82-47d9-b51c-a76916479545', 'name': 'stateA'},
-    {'id': '421a55f4-7d82-47d9-b51c-a76916479546', 'name': 'stateB'},
-    {'id': '421a55f4-7d82-47d9-b52c-a76916479547', 'name': 'stateC'},
-    {'id': '421a55f4-7d82-47d9-b53c-a76916479548', 'name': 'stateD'},
-    {'id': '421a55f4-7d82-47d9-b57c-a76916479549', 'name': 'stateE'}
-]
-  return render_template("7-states_list.html", states = states)
+@app.route('/states_list', strict_slashes=False)
+def states_list():
+    """ Display a list of state """
+    state_objects = storage.all(State).values()
+    data = sorted(state_objects, key=lambda state: state.name)
+    return render_template('7-states_list.html', data=data)
+
 
 @app.teardown_appcontext
-def teardown(exc):
-    """Remove the current SQLAlchemy session."""
+def teardown(exception):
+    """ remove sql session """
     storage.close()
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+
+if (__name__ == '__main__'):
+    app.run(host='0.0.0.0', port='5000', debug=True)
