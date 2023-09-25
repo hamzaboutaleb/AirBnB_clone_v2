@@ -8,7 +8,7 @@ from models import storage_type
 class Amenity(BaseModel, Base):
     """ class Amenity """
     __tablename__ = 'amenities'
-
+    __table_args__ = ({'mysql_default_charset': 'latin1'})
     name = Column(String(128), nullable=False)
 
     if storage_type == "db":
