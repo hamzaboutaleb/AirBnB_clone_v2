@@ -73,7 +73,7 @@ class DBStorage():
     def close(self):
         """ close session"""
         self.__session.close()
-        self.reload()
+        self.__session = self.Session()
 
     def reload(self):
         """ Create tables and current db session """
