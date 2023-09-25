@@ -72,11 +72,8 @@ class DBStorage():
 
     def close(self):
         """ close session"""
-        self.__session.close()
-        session_factory = sessionmaker(
-                bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(session_factory)
-        self.__session = Session()
+        self.__session.remove()
+        self.reload()
 
     def reload(self):
         """ Create tables and current db session """
